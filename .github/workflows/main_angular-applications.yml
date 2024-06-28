@@ -6,12 +6,12 @@ name: Build and deploy Node.js app to Azure Web App - angular-applications
 on:
   push:
     branches:
-      - main
+      - 'main'
   workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -19,13 +19,12 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
+          node-version: '14.x'
 
       - name: npm install, build
         run: |
           npm install
           npm run build --if-present
-
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
@@ -55,10 +54,9 @@ jobs:
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_61B40231299A4271AD25167C7EE804AE }}
 
       - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
+        id: deploy-to-webapp
         with:
           app-name: 'angular-applications'
           slot-name: 'Production'
           package: .
-          
