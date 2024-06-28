@@ -42,4 +42,4 @@ jobs:
 
       - name: Deploy to App Engine
         run: |
-          gcloud app deploy --quiet ./angular-azure-cicd/app.yaml --project ${{ secrets.GCP_PROJECT_ID }} --promote
+          gcloud app deploy --quiet ./app.yaml --project ${{ secrets.GCP_PROJECT_ID }} --promote
