@@ -1,0 +1,13 @@
+runtime: nodejs18
+instance_class: F1
+
+
+handlers:
+  # Serve index.html for requests to the root URL ("/")
+  - url: /
+    static_files: src/my-angular-app/index.html
+    upload: src/angular-azure-cicd/index.html
+
+  # Serve static files from the "dist" directory
+  - url: /
+    static_dir: src/angular-azure-cicd
