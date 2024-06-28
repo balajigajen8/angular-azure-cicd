@@ -59,7 +59,7 @@ jobs:
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
-          app-name: 'AzureAngualrWebApp'
+          app-name: 'angular-applications'
           slot-name: 'Production'
           package: .
           
